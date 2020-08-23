@@ -7,12 +7,12 @@ import jetbrains.exodus.entitystore.Entity;
 import jetbrains.exodus.entitystore.StoreTransaction;
 import jetbrains.exodus.util.HexUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.security.SecureRandom;
 import java.util.Optional;
 
-@Service
+@Component
 public class AppStateMapper {
 
     @Autowired
