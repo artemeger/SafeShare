@@ -26,7 +26,7 @@ public class AppStateMapper {
                         .withHeight((Long) state.getProperty(AppState.field_height))
                         .build())
                 .orElse(appStateBuilder
-                        .withHash(getRandomHash())
+                        .withHash("")
                         .withHeight(0L)
                         .build());
     }
