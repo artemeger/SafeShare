@@ -1,6 +1,5 @@
 package de.y3om11.safeshare.app;
 
-import com.github.jtendermint.jabci.socket.TSocket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +28,6 @@ public class ABCIApp {
 
     @EventListener(ApplicationReadyEvent.class)
     public void startup(){
-        TSocket socket = new TSocket((exception, connection, event) -> {}, (name, count) -> {}, (name, remaining) -> {});
-        socket.registerListener(this);
-        Thread t = new Thread(socket::start);
-        t.setName("ABCI Socket Thread startup");
-        t.setDaemon(true);
-        t.start();
+        applicationFacade.startSocket();
     }
 }

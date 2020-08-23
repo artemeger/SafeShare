@@ -4,8 +4,8 @@ import com.github.jtendermint.jabci.api.IInfo;
 import com.github.jtendermint.jabci.types.RequestInfo;
 import com.github.jtendermint.jabci.types.ResponseInfo;
 import com.google.protobuf.ByteString;
+import de.y3om11.safeshare.app.gateway.IAppStateRepository;
 import de.y3om11.safeshare.domain.objects.appstate.AppState;
-import de.y3om11.safeshare.adapter.persistence.appstate.AppStateRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class Info implements IInfo {
     private final static Logger log = LoggerFactory.getLogger(Info.class);
 
     @Autowired
-    private AppStateRepository appStateRepository;
+    private IAppStateRepository appStateRepository;
 
     @Override
     public ResponseInfo requestInfo(final RequestInfo requestInfo) {

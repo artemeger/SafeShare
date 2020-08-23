@@ -1,6 +1,5 @@
 package de.y3om11.safeshare.app.config;
 
-import com.github.jtendermint.jabci.api.*;
 import de.y3om11.safeshare.adapter.abci.*;
 import de.y3om11.safeshare.adapter.persistence.appstate.AppStateMapper;
 import de.y3om11.safeshare.adapter.persistence.appstate.AppStateRepository;
@@ -56,37 +55,37 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public IBeginBlock getBeginBlock(){
+    public BeginBlock getBeginBlock(){
         return new BeginBlock();
     }
 
     @Bean
-    public ICheckTx getCheckTx(){
+    public CheckTx getCheckTx(){
         return new CheckTx();
     }
 
     @Bean
-    public ICommit getCommit(){
+    public Commit getCommit(){
         return new Commit();
     }
 
     @Bean
-    public IDeliverTx getDeliverTx(){
+    public DeliverTx getDeliverTx(){
         return new DeliverTx();
     }
 
     @Bean
-    public IEndBlock getEndBlock(){
+    public EndBlock getEndBlock(){
         return new EndBlock();
     }
 
     @Bean
-    public IInfo getInfo(){
+    public Info getInfo(){
         return new Info();
     }
 
     @Bean
-    public IQuery getQuery(){
+    public Query getQuery(){
         return new Query();
     }
 }
