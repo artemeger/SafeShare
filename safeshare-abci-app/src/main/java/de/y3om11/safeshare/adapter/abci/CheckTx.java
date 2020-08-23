@@ -27,7 +27,7 @@ public class CheckTx implements ICheckTx {
 
     @Override
     public ResponseCheckTx requestCheckTx(final RequestCheckTx requestCheckTx) {
-        log.info("CheckTx called with: " +  requestCheckTx.getTx().toString());
+        log.info("CheckTx called with: " +  requestCheckTx.getTx().toStringUtf8());
         final AtomicBoolean result = new AtomicBoolean(false);
         final String txHexString = new String(requestCheckTx.getTx().toByteArray());
         final Optional<IDomainTx> txOpt = transactionMapper.getTxFromHexString(txHexString);

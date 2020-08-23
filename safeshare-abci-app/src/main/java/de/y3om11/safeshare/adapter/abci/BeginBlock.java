@@ -15,7 +15,7 @@ public class BeginBlock implements IBeginBlock {
     @Override
     public ResponseBeginBlock requestBeginBlock(final RequestBeginBlock requestBeginBlock) {
         log.info(String.format("Begin Block with new hash %s and height %s",
-                requestBeginBlock.getHash(), requestBeginBlock.getHeader().getHeight()));
+                requestBeginBlock.getHash().toStringUtf8(), requestBeginBlock.getHeader().getHeight()));
         return ResponseBeginBlock.newBuilder().build();
     }
 }
