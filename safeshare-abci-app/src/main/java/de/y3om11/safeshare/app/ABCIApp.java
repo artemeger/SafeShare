@@ -23,6 +23,5 @@ public class ABCIApp {
     }
 
     @EventListener(ApplicationReadyEvent.class)
-    public void startup(){
-    }
+    public void startup(){}
 }
