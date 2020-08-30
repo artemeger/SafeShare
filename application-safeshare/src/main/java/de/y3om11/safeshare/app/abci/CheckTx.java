@@ -32,10 +32,7 @@ public class CheckTx implements ICheckTx {
         final AtomicBoolean result = new AtomicBoolean(false);
         final String txHexString = new String(requestCheckTx.getTx().toByteArray());
         final Optional<IDomainTx> txOpt = transactionMapper.getTxFromHexString(txHexString);
-        txOpt.ifPresent(tx -> {
-            result.set(tx.visit(validator));
-            log.info("Transaction valid");
-        });
+        txOpt.ifPresent(tx -> result.set(tx.visit(validator)));
         return ResponseCheckTx.newBuilder()
                 .setCode(result.get() ? CodeType.OK : CodeType.BAD)
                 .setInfo(result.get() ? "Valid" : "Invalid")

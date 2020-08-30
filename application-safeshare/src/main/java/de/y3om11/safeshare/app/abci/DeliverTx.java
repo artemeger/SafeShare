@@ -4,7 +4,6 @@ import com.github.jtendermint.jabci.api.CodeType;
 import com.github.jtendermint.jabci.api.IDeliverTx;
 import com.github.jtendermint.jabci.types.RequestDeliverTx;
 import com.github.jtendermint.jabci.types.ResponseDeliverTx;
-import com.google.protobuf.ByteString;
 import de.y3om11.safeshare.app.visitors.CheckTxValidationVisitor;
 import de.y3om11.safeshare.app.visitors.DeliverTxExecutionVisitor;
 import de.y3om11.safeshare.domain.gateway.tx.IDomainTx;
@@ -38,12 +37,14 @@ public class DeliverTx implements IDeliverTx {
         final String txHexString = new String(requestDeliverTx.getTx().toByteArray());
         final Optional<IDomainTx> txOpt = transactionMapper.getTxFromHexString(txHexString);
         txOpt.ifPresent(tx -> {
-            if(tx.visit(validator)) result.set(tx.visit(executor));
+            if(tx.visit(validator)) {
+                result.set(tx.visit(executor));
+                log.info("Transaction valid");
+            }
         });
         return ResponseDeliverTx.newBuilder()
                 .setCode(result.get() ? CodeType.OK : CodeType.BAD)
                 .setInfo(result.get() ? "Valid" : "Invalid")
-                .setData(result.get() ? requestDeliverTx.getTx() : ByteString.copyFromUtf8(""))
                 .build();
     }
 
