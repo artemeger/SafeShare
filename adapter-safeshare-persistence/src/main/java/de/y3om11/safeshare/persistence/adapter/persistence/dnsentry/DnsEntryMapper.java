@@ -40,7 +40,7 @@ public class DnsEntryMapper {
     public Optional<DnsEntry> findById(final StoreTransaction tx, final String dnsEntryId){
         return Optional.ofNullable(tx.find(name, field_dnsEntryId, dnsEntryId).getFirst())
                 .map(entry -> new DnsEntryBuilder()
-                        .withDnsEntry((String) entry.getProperty(field_dnsEntryId))
+                        .withDnsEntryId((String) entry.getProperty(field_dnsEntryId))
                         .withDomainName((String) entry.getProperty(field_domainName))
                         .withPublicKeyBytes(HexUtil.stringToByteArray((String) requireNonNull(entry.getProperty(field_publicKeyBytes))))
                         .build());
@@ -49,7 +49,7 @@ public class DnsEntryMapper {
     public Optional<DnsEntry> findByDomainName(final StoreTransaction tx, final String domainName){
         return Optional.ofNullable(tx.find(name, field_domainName, domainName).getFirst())
                 .map(entry -> new DnsEntryBuilder()
-                        .withDnsEntry((String) entry.getProperty(field_dnsEntryId))
+                        .withDnsEntryId((String) entry.getProperty(field_dnsEntryId))
                         .withDomainName((String) entry.getProperty(field_domainName))
                         .withPublicKeyBytes(HexUtil.stringToByteArray((String) requireNonNull(entry.getProperty(field_publicKeyBytes))))
                         .build());
