@@ -9,7 +9,7 @@ public class DnsEntryBuilder {
     byte [] publicKeyBytes;
     String domainName;
 
-    public DnsEntryBuilder withDnsEntry(final String dnsEntryId){
+    public DnsEntryBuilder withDnsEntryId(final String dnsEntryId){
         this.dnsEntryId = dnsEntryId;
         return this;
     }

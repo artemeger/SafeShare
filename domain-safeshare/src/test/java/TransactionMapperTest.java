@@ -26,13 +26,14 @@ class TransactionMapperTest {
     @Test
     void testDomainEntry(){
         DnsEntry dnsEntry = new DnsEntryBuilder()
-                .withDnsEntry(UUID.randomUUID().toString())
+                .withDnsEntryId(UUID.randomUUID().toString())
                 .withPublicKeyBytes("PubkeyBytes".getBytes())
                 .withDomainName("MyDomain")
                 .build();
         TransactionMapper transactionMapper = new TransactionMapper();
         String txString = transactionMapper.createTx(dnsEntry).get();
         System.out.println(txString);
+        DnsEntry dnsEntryObj = (DnsEntry) transactionMapper.getTxFromHexString(txString).get();
     }
 
 }
