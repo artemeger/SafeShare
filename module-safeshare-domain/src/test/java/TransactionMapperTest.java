@@ -1,9 +1,8 @@
-package de.y3om11.safeshare.domain.serialization;
-
 import de.y3om11.safeshare.domain.objects.dnsentry.DnsEntry;
 import de.y3om11.safeshare.domain.objects.dnsentry.DnsEntryBuilder;
 import de.y3om11.safeshare.domain.objects.filetransfer.FileTransfer;
 import de.y3om11.safeshare.domain.objects.filetransfer.FileTransferBuilder;
+import de.y3om11.safeshare.domain.serialization.TransactionMapper;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
@@ -29,7 +28,7 @@ class TransactionMapperTest {
         DnsEntry dnsEntry = new DnsEntryBuilder()
                 .withDnsEntry(UUID.randomUUID().toString())
                 .withPublicKeyBytes("PubkeyBytes".getBytes())
-                .withDomainName("MyDomain2")
+                .withDomainName("MyDomain3")
                 .build();
         TransactionMapper transactionMapper = new TransactionMapper();
         String txString = transactionMapper.createTx(dnsEntry).get();
