@@ -1,10 +1,10 @@
 package de.y3om11.safeshare.domain.objects.filetransfer;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import de.y3om11.safeshare.domain.IDomainTx;
-import de.y3om11.safeshare.domain.IVisitor;
-import de.y3om11.safeshare.domain.TxType;
+import de.y3om11.safeshare.domain.gateway.tx.IDomainTx;
+import de.y3om11.safeshare.domain.gateway.tx.TxType;
+import de.y3om11.safeshare.domain.gateway.visitor.IVisitor;
 
 import java.util.Arrays;
 import java.util.HashMap;
