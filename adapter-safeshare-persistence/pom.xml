@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>de.y3om11</groupId>
-            <artifactId>safeshare-domain-module</artifactId>
+            <artifactId>module-safeshare-domain</artifactId>
             <version>${application.version}</version>
         </dependency>
     </dependencies>
