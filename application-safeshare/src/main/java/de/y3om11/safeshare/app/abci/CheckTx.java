@@ -1,5 +1,6 @@
 package de.y3om11.safeshare.app.abci;
 
+import com.github.jtendermint.jabci.api.CodeType;
 import com.github.jtendermint.jabci.api.ICheckTx;
 import com.github.jtendermint.jabci.types.RequestCheckTx;
 import com.github.jtendermint.jabci.types.ResponseCheckTx;
@@ -31,9 +32,13 @@ public class CheckTx implements ICheckTx {
         final AtomicBoolean result = new AtomicBoolean(false);
         final String txHexString = new String(requestCheckTx.getTx().toByteArray());
         final Optional<IDomainTx> txOpt = transactionMapper.getTxFromHexString(txHexString);
-        txOpt.ifPresent(tx -> result.set(tx.visit(validator)));
+        txOpt.ifPresent(tx -> {
+            result.set(tx.visit(validator));
+            log.info("Transaction valid");
+        });
         return ResponseCheckTx.newBuilder()
-                .setCode(result.get() ? 1 : 0)
+                .setCode(result.get() ? CodeType.OK : CodeType.BAD)
+                .setInfo(result.get() ? "Valid" : "Invalid")
                 .build();
     }
 }

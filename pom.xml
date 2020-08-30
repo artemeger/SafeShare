@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>application-safeshare</module>
-        <module>module-safeshare-domain</module>
+        <module>domain-safeshare</module>
         <module>adapter-safeshare-persistence</module>
         <module>adapter-safeshare-dns</module>
     </modules>
