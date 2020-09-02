@@ -12,7 +12,7 @@
         <module>application-safeshare</module>
         <module>domain-safeshare</module>
         <module>adapter-safeshare-persistence</module>
-        <module>adapter-safeshare-dns</module>
+        <module>safeshare-dns</module>
     </modules>
     <properties>
         <spring.version>2.2.6.RELEASE</spring.version>

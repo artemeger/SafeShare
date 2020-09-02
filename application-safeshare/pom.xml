@@ -20,7 +20,7 @@
         </dependency>
         <dependency>
             <groupId>de.y3om11</groupId>
-            <artifactId>adapter-safeshare-dns</artifactId>
+            <artifactId>safeshare-dns</artifactId>
             <version>${domain.version}</version>
         </dependency>
         <dependency>
