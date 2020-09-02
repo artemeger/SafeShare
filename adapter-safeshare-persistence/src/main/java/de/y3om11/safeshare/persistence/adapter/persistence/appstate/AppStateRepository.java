@@ -24,12 +24,10 @@ public class AppStateRepository implements IAppStateRepository {
         log.info("AppState increment: Height: " + appState.height + " Hash: " + appState.hash);
         store.executeInTransaction(tx -> Optional.ofNullable(tx.getAll(AppState.name).getFirst())
                 .ifPresentOrElse(state -> {
-                    log.info("Current : " + state.toIdString());
                     final String newState = MessageDigestUtil.sha256(appState.hash + appState.height);
                     final Long newHeight = appState.height + 1L;
                     appStateMapper.update(tx, newState, newHeight);
                     log.info(String.format("Updating AppState from %s to %s", appState.hash, newState));
-                    log.info("New height is " + newHeight);
                 }, () -> {
                     log.info("Not present... create");
                     appStateMapper.create(tx, appState);
