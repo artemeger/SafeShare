@@ -38,7 +38,7 @@ public class AppStateMapper {
 
     public void create(final StoreTransaction tx, final AppState appState){
         final boolean isPresent = Optional.ofNullable(tx.getAll(AppState.name).getFirst()).isPresent();
-        if (isPresent) {
+        if (!isPresent) {
             final Entity state = tx.newEntity(AppState.name);
             state.setProperty(AppState.field_hash, appState.hash);
             state.setProperty(AppState.field_height, appState.height);
