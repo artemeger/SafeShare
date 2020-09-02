@@ -2,14 +2,11 @@ package de.y3om11.safeshare.persistence.adapter.persistence.appstate;
 
 import de.y3om11.safeshare.domain.objects.appstate.AppState;
 import de.y3om11.safeshare.domain.objects.appstate.AppStateBuilder;
-import jetbrains.exodus.core.crypto.MessageDigestUtil;
 import jetbrains.exodus.entitystore.Entity;
 import jetbrains.exodus.entitystore.StoreTransaction;
-import jetbrains.exodus.util.HexUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.security.SecureRandom;
 import java.util.Optional;
 
 @Component
@@ -46,9 +43,5 @@ public class AppStateMapper {
             state.setProperty(AppState.field_hash, appState.hash);
             state.setProperty(AppState.field_height, appState.height);
         }
-    }
-
-    private String getRandomHash(){
-        return MessageDigestUtil.sha256(HexUtil.byteArrayToString(new SecureRandom().generateSeed(16)));
     }
 }
