@@ -21,7 +21,7 @@ public class AppStateRepository implements IAppStateRepository {
     private AppStateMapper appStateMapper;
 
     public void increment(final AppState appState){
-        store.executeInExclusiveTransaction(tx -> Optional.ofNullable(tx.getAll(AppState.name).getFirst())
+        store.executeInTransaction(tx -> Optional.ofNullable(tx.getAll(AppState.name).getFirst())
                 .ifPresentOrElse(state -> {
                     final String newState = MessageDigestUtil.sha256(appState.hash + appState.height);
                     final Long newHeight = appState.height + 1L;
