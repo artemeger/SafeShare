@@ -28,7 +28,7 @@ class TransactionMapperTest {
         DnsEntry dnsEntry = new DnsEntryBuilder()
                 .withDnsEntryId(UUID.randomUUID().toString())
                 .withPublicKeyBytes("PubkeyBytes".getBytes())
-                .withDomainName("MyDomain")
+                .withDomainName("MyDomain333")
                 .build();
         TransactionMapper transactionMapper = new TransactionMapper();
         String txString = transactionMapper.createTx(dnsEntry).get();
